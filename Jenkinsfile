@@ -9,7 +9,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
-          dockerImage = docker.build("CI-CD-case-testing", ".")
+          dockerImage = docker.build("cd-ci-case-testing", ".")
         }
       }
     }
