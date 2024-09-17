@@ -23,6 +23,15 @@ pipeline {
         }
       }
     }
+    // Docker build kit
+    stage('Build Docker Image') {
+    steps {
+        script {
+            env.DOCKER_BUILDKIT = "1"
+            sh 'docker build -t cd-ci-case-testing .'
+        }
+    }
+}
     stage ("Clean up Docker container") {
       steps {
         script {
