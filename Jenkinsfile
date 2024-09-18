@@ -24,24 +24,24 @@ pipeline {
       }
     }
     
-    stage ("Clean up Docker container") {
-      steps {
-        script {
-          sh """
-            if [ \$(docker ps -q -f name=hello-world-app) ]; then
-              docker stop hello-world-app
-            fi
-            """
+    // stage ("Clean up Docker container") {
+    //   steps {
+    //     script {
+    //       sh """
+    //         if [ \$(docker ps -q -f name=hello-world-app) ]; then
+    //           docker stop hello-world-app
+    //         fi
+    //         """
 
-            // Remove the container if it exists
-            sh """
-            if [ \$(docker ps -a -q -f name=hello-world-app) ]; then
-              docker rm hello-world-app
-            fi
-            """
-        }
-      }
-    }
+    //         // Remove the container if it exists
+    //         sh """
+    //         if [ \$(docker ps -a -q -f name=hello-world-app) ]; then
+    //           docker rm hello-world-app
+    //         fi
+    //         """
+    //     }
+    //   }
+    // }
     stage('Deploy to Production') {
       steps {
         script {
